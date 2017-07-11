@@ -89,7 +89,7 @@ class system:
                         'KeyboardLayout1': {
                             'order': 1,
                             'name': 32010,
-                            'value': 'us',
+                            'value': 'fr',
                             'action': 'set_keyboard_layout',
                             'type': 'multivalue',
                             'values': [],
@@ -107,7 +107,7 @@ class system:
                         'KeyboardLayout2': {
                             'order': 3,
                             'name': 32010,
-                            'value': 'us',
+                            'value': 'fr',
                             'action': 'set_keyboard_layout',
                             'type': 'multivalue',
                             'values': [],
@@ -874,15 +874,15 @@ class system:
                 self.oe.set_busy(0)
 
             xbmcDialog = xbmcgui.Dialog()
-            bckDir = xbmcDialog.browse( 0, 
+            bckDir = xbmcDialog.browse( 0,
                                         self.oe._(32371).encode('utf-8'),
-                                        'files', 
-                                        '', 
-                                        False, 
-                                        False, 
+                                        'files',
+                                        '',
+                                        False,
+                                        False,
                                         self.BACKUP_DESTINATION )
 
-            if bckDir and os.path.exists(bckDir): 
+            if bckDir and os.path.exists(bckDir):
                 # free space check
                 try:
                     folder_stat = os.statvfs("/storage")
@@ -894,7 +894,7 @@ class system:
                         return 0
                 except:
                     pass
-                    
+
                 self.backup_dlg = xbmcgui.DialogProgress()
                 self.backup_dlg.create('LibreELEC', self.oe._(32375).encode('utf-8'), ' ', ' ')
                 if not os.path.exists(self.BACKUP_DESTINATION):
@@ -917,16 +917,16 @@ class system:
             self.oe.dbg_log('system::do_restore', 'enter_function', 0)
             copy_success = 0
             xbmcDialog = xbmcgui.Dialog()
-            restore_file_path = xbmcDialog.browse( 1, 
+            restore_file_path = xbmcDialog.browse( 1,
                                               self.oe._(32373).encode('utf-8'),
-                                              'files', 
-                                              '??????????????.tar', 
-                                              False, 
-                                              False, 
+                                              'files',
+                                              '??????????????.tar',
+                                              False,
+                                              False,
                                               self.BACKUP_DESTINATION )
-            
+
             restore_file_name = restore_file_path.split('/')[-1]
-            
+
             if not os.path.exists(self.RESTORE_DIR):
                 os.makedirs(self.RESTORE_DIR)
             else:
@@ -1107,5 +1107,3 @@ class updateThread(threading.Thread):
             self.oe.dbg_log('system::updateThread::run', 'exit_function', 0)
         except Exception, e:
             self.oe.dbg_log('system::updateThread::run', 'ERROR: (' + repr(e) + ')')
-
-
