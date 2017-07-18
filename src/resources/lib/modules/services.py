@@ -540,7 +540,7 @@ class services:
                 self.oe.winOeMain.set_wizard_text(self.oe._(32312))
             self.oe.winOeMain.set_wizard_button_title(self.oe._(32316))
 
-            if(self.AUTO_ENABLE_SSH)
+            if(self.AUTO_ENABLE_SSH):
                 wizard_set_ssh()
 
             self.set_wizard_buttons()
