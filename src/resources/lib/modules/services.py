@@ -127,7 +127,7 @@ class services:
                         'ssh_autostart': {
                             'order': 1,
                             'name': 32205,
-                            'value': None,
+                            'value': 1,
                             'action': 'initialize_ssh',
                             'type': 'bool',
                             'InfoText': 742,
@@ -594,5 +594,3 @@ class services:
             self.oe.dbg_log('services::wizard_set_samba', 'exit_function', 0)
         except Exception, e:
             self.oe.dbg_log('services::wizard_set_samba', 'ERROR: (%s)' % repr(e))
-
-
