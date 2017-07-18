@@ -525,7 +525,7 @@ class services:
         except Exception, e:
             self.oe.dbg_log('services::exit', 'ERROR: (%s)' % repr(e), 4)
 
-    def enable_addon(addon_id, enable="true"):
+    def enable_addon(self, addon_id, enable="true"):
         import json
         addon = '"%s"' % addon_id
         if xbmc.getCondVisibility("System.HasAddon(%s)" % addon_id) and enable == "true":
