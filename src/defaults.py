@@ -75,6 +75,7 @@ services = {
     'AVAHI_DAEMON': '/usr/sbin/avahi-daemon',
     'CRON_DAEMON': '/sbin/crond',
     'LIRCD_UEVENT_FILE': '/sys/class/lirc/lirc0/uevent',
+    'AUTO_ENABLE_SSH': True,
     }
 
 system = {

@@ -45,6 +45,7 @@ class services:
     AVAHI_DAEMON = None
     CRON_DAEMON = None
     LIRCD_UEVENT_FILE = None
+    AUTO_ENABLE_SSH = None
     menu = {'4': {
         'name': 32001,
         'menuLoader': 'load_menu',
@@ -127,7 +128,7 @@ class services:
                         'ssh_autostart': {
                             'order': 1,
                             'name': 32205,
-                            'value': 1,
+                            'value': None,
                             'action': 'initialize_ssh',
                             'type': 'bool',
                             'InfoText': 742,
@@ -538,6 +539,10 @@ class services:
             else:
                 self.oe.winOeMain.set_wizard_text(self.oe._(32312))
             self.oe.winOeMain.set_wizard_button_title(self.oe._(32316))
+
+            if(self.AUTO_ENABLE_SSH)
+                wizard_set_ssh()
+
             self.set_wizard_buttons()
             self.oe.dbg_log('services::do_wizard', 'exit_function', 0)
         except Exception, e:
