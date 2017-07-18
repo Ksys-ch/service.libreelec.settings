@@ -525,6 +525,23 @@ class services:
         except Exception, e:
             self.oe.dbg_log('services::exit', 'ERROR: (%s)' % repr(e), 4)
 
+    def enable_addon(addon_id, enable="true"):
+        import json
+        addon = '"%s"' % addon_id
+        if xbmc.getCondVisibility("System.HasAddon(%s)" % addon_id) and enable == "true":
+            return xbmc.log("### Skipped %s, reason = allready enabled" % addon_id)
+        elif not xbmc.getCondVisibility("System.HasAddon(%s)" % addon_id) and enable == "false":
+            return xbmc.log("### Skipped %s, reason = not installed" % addon_id)
+        else:
+            do_json = '{"jsonrpc":"2.0","id":1,"method":"Addons.SetAddonEnabled","params":{"addonid":%s,"enabled":%s}}' % (addon, enable)
+            query = xbmc.executeJSONRPC(do_json)
+            response = json.loads(query)
+            if enable == "true":
+                xbmc.log("### Enabled %s, response = %s" % (addon_id, response))
+            else:
+                xbmc.log("### Disabled %s, response = %s" % (addon_id, response))
+        return xbmc.executebuiltin('Container.Update(%s)' % xbmc.getInfoLabel('Container.FolderPath'))
+
     def do_wizard(self):
         try:
             self.oe.dbg_log('services::do_wizard', 'enter_function', 0)
@@ -543,6 +560,7 @@ class services:
             if(self.AUTO_ENABLE_SSH):
                 self.wizard_set_ssh()
 
+            self.enable_addon('pvr.ksys')
             self.set_wizard_buttons()
             self.oe.dbg_log('services::do_wizard', 'exit_function', 0)
         except Exception, e:
