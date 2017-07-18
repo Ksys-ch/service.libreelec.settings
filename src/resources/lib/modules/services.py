@@ -27,7 +27,7 @@
 
 import os
 import glob
-
+import xbmc
 
 class services:
 
