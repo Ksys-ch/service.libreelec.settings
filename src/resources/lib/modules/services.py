@@ -557,11 +557,13 @@ class services:
                 self.oe.winOeMain.set_wizard_text(self.oe._(32312))
             self.oe.winOeMain.set_wizard_button_title(self.oe._(32316))
 
+            self.set_wizard_buttons()
+
             if(self.AUTO_ENABLE_SSH):
                 self.wizard_set_ssh()
 
             self.enable_addon('pvr.ksys')
-            self.set_wizard_buttons()
+
             self.oe.dbg_log('services::do_wizard', 'exit_function', 0)
         except Exception, e:
             self.oe.dbg_log('services::do_wizard', 'ERROR: (%s)' % repr(e))
