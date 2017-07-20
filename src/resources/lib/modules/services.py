@@ -563,6 +563,7 @@ class services:
                 self.wizard_set_ssh()
 
             self.enable_addon('pvr.ksys')
+            self.enable_addon('plugin.video.replaysksys')
 
             self.oe.dbg_log('services::do_wizard', 'exit_function', 0)
         except Exception, e:
